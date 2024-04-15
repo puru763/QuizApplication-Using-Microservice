@@ -20,4 +20,6 @@ public class Question {
 
     private long questionId;
     private String question;
+
+    private Long quizId;
 }

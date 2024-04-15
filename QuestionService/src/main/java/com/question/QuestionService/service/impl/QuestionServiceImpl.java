@@ -17,12 +17,14 @@ public class QuestionServiceImpl implements QuestionService {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public QuestionServiceImpl(QuestionRepository questionRepository) {
+    public void QuestionsServiceImpl(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 
+
+
     @Override
-    public Question craete(Question question) {
+    public Question create(Question question) {
         return questionRepository.save(question);
     }
 
@@ -35,4 +37,12 @@ public class QuestionServiceImpl implements QuestionService {
     public Question getOne(Long id) {
         return questionRepository.findById(id).orElseThrow(()->  new RuntimeException("Question Not Found"));
     }
+
+
+
+    @Override
+    public List<Question> GetQuestionsOfQuiz(Long quidId) {
+        return questionRepository.findByQuizId(quidId);
+    }
+
 }
