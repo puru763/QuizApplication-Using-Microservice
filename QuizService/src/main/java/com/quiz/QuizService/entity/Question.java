@@ -11,7 +11,7 @@ import lombok.Setter;
 
 
 
-@Entity
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,8 +19,6 @@ import lombok.Setter;
 
 public class Question {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long questionId;
     private String question;
