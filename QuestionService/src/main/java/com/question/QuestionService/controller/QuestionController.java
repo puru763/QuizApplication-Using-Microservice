@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
-
-
-
 
     @Autowired
     private QuestionService questionService;
@@ -22,7 +18,6 @@ public class QuestionController {
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
-
 
     @PostMapping("/create")
     public Question craete(@RequestBody Question question)
@@ -42,18 +37,9 @@ public class QuestionController {
         return questionService.getOne(id);
     }
 
-
     @GetMapping("/quiz/{quizId}")
     public List<Question> getQuestionsOfQuiz(@PathVariable Long quizId)
     {
         return questionService.GetQuestionsOfQuiz(quizId);
     }
-
-
-
-
-
-
-
-
 }
