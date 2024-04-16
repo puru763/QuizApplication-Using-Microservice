@@ -17,7 +17,6 @@ public class QuizServiceImpl implements QuizService {
 
 
 
-    @Autowired
     private QuizRepository quizRepository;
     private QuestionClient questionClient;
 
@@ -28,7 +27,7 @@ public class QuizServiceImpl implements QuizService {
 
 
 
-    @Override
+     @Override
     public Quiz add(Quiz quiz) {
         return quizRepository.save(quiz);
     }
@@ -47,6 +46,9 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public Quiz get(Long id) {
-        return quizRepository.findById(id).orElseThrow(() ->  new RuntimeException("Quiz Not Found"));
+
+        Quiz quiz = quizRepository.findById(id).orElseThrow(() -> new RuntimeException("Quiz not found"));
+        quiz.setQuestions(questionClient.getQuestionOfQuiz(quiz.getId()));
+        return quiz;
     }
 }
